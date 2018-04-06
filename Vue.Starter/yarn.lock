@@ -4402,6 +4402,10 @@ watchpack@^1.4.0:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
 
+webpack-clean-plugin@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/webpack-clean-plugin/-/webpack-clean-plugin-0.2.3.tgz#ab8f4f717573c40b9ea47a32c9f1c4b2862cd8e3"
+
 webpack-dev-middleware@^1.8.4:
   version "1.12.2"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.12.2.tgz#f8fc1120ce3b4fc5680ceecb43d777966b21105e"

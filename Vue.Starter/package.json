@@ -23,6 +23,7 @@
     "vue-property-decorator": "^6.0.0",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.11.0",
+    "webpack-clean-plugin": "^0.2.3",
     "webpack-hot-middleware": "^2.21.0"
   },
   "dependencies": {
