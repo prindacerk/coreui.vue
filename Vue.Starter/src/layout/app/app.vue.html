@@ -1,20 +1,20 @@
 <template>
 	<div id="app-root">
-		<header-layout />
+		<app-header />
 
 		<div class="container-fluid">
 			<div class="row">
-				<side-menu-layout />
+				<side-menu />
 
 				<main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
 					<router-view />
 				</main>
 
-				<aside-menu-layout />
+				<aside-menu />
 			</div>
 		</div>
 
-		<footer-layout />
+		<app-footer />
 	</div>
 </template>
 
