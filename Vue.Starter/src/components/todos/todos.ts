@@ -16,8 +16,8 @@ export default class TodoComponent extends Vue {
         fetch("/api/todo")
             .then(response => response.json() as Promise<ITodoItem[]>)
             .then(data => {
-                this.todos = data;
-            });
+				this.todos = data;
+	        });
     }
 
     data() {
@@ -45,8 +45,8 @@ export default class TodoComponent extends Vue {
             });
     }
 
-    completeItem(item: ITodoItem) {
-        fetch("/api/todo/${item.id}", {
+	completeItem(item: ITodoItem) {
+		fetch(`/api/todo/${item.id}`, {
                 method: "delete",
                 headers: new Headers({
                     'Accept': "application/json",

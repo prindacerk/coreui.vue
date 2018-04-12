@@ -17,6 +17,7 @@ module.exports = (env) => {
 				"./src/assets/styles/theme/vendors.scss",
 
 				"bootstrap",
+				"bootstrap-vue",
 				"event-source-polyfill",
 				"isomorphic-fetch",
 				"jquery",
@@ -32,16 +33,25 @@ module.exports = (env) => {
 		module: {
 			rules: [
 				{
-					test: /\.(scss|css)(\?|$)/, use: extractSass.extract({
+					test: /\.(scss|css)(\?|$)/,
+					use: extractSass.extract({
 						use: [
 							{ loader: "css-loader", options: { minimize: !isDevBuild } },
 							{ loader: "sass-loader", options: { minimize: !isDevBuild } }
-						], fallback: "style-loader"
-					})
+						],
+						fallback: "style-loader",
+					}),
 				},
-				//{ test: /\.css(\?|$)/, use: extractCss.extract({ use: isDevBuild ? "css-loader" : "css-loader?minimize" }) },
-				{ test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf|svg)(\?|$)/, use: [{ loader: "url-loader", options: { limit: 100000, name: "[hash].[ext]", outputPath: "vendor/", publicPath: "" } }] },
-				// if less than 10 kb, add base64 encoded image to css. if more than 10 kb move to this folder in build using file-loader
+				/*{
+					test: /\.css(\?|$)/,
+					use: extractCss.extract({ use: isDevBuild ? "css-loader" : "css-loader?minimize" }),
+				},*/
+				{
+					test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf|svg)(\?|$)/,
+					use: [
+						{ loader: "url-loader", options: { limit: 100000, name: "[hash].[ext]", outputPath: "vendor/", publicPath: "" } },
+					],
+				},
 			]
 		},
 		output: {

@@ -1,17 +1,19 @@
 <template>
-	<div id="app-root">
+	<div id="app-root" class="app">
 		<app-header />
+		
+		<div class="app-body">
+			<side-menu />
 
-		<div class="container-fluid">
-			<div class="row">
-				<side-menu />
+			<main class="main">
+				<breadcrumb :list="list" />
 
-				<main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+				<div class="container-fluid">
 					<router-view />
-				</main>
+				</div>
+			</main>
 
-				<aside-menu />
-			</div>
+			<aside-menu />
 		</div>
 
 		<app-footer />

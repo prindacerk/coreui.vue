@@ -31,21 +31,21 @@
 		<link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 	</environment>
 </head>
-<body>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
 
-@RenderBody()
-	
-<environment names="Development, Staging">
-	<script src="~/vendor/vendor.js" asp-append-version="true"></script>
+	@RenderBody()
 
-	<script src="~/js/site.js" asp-append-version="true"></script>
-</environment>
-<environment names="Production">
-	<script src="~/vendor/vendor.min.js" asp-append-version="true"></script>
+	<environment names="Development, Staging">
+		<script src="~/vendor/vendor.js" asp-append-version="true"></script>
 
-	<script src="~/js/site.min.js" asp-append-version="true"></script>
-</environment>
+		<script src="~/js/site.js" asp-append-version="true"></script>
+	</environment>
+	<environment names="Production">
+		<script src="~/vendor/vendor.min.js" asp-append-version="true"></script>
 
-@RenderSection("scripts", required: false)
+		<script src="~/js/site.min.js" asp-append-version="true"></script>
+	</environment>
+
+	@RenderSection("scripts", required: false)
 </body>
 </html>
