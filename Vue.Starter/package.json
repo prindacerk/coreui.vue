@@ -2,6 +2,16 @@
   "name": "coreui.vue.starter",
   "private": true,
   "version": "1.0.0",
+  "scripts": {
+    "build:dev-vendor": "webpack --config webpack.config.vendor.js",
+    "build:dev": "yarn run build:dev-vendor && webpack",
+    "build:prod-vendor": "webpack --config webpack.config.vendor.js --env.prod",
+    "build:prod": "yarn run build:prod-vendor && webpack --env.prod",
+    "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
+    "e2e": "node test/e2e/runner.js",
+    "test": "npm run unit && npm run e2e",
+    "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs"
+  },
   "devDependencies": {
     "@types/jquery": "^3.3.1",
     "@types/toastr": "^2.1.35",
