@@ -8,7 +8,6 @@ const bundleOutputDir = "./wwwroot";
 
 module.exports = (env) => {
 	const isDevBuild = !(env && env.prod);
-	//const extractSass = new ExtractTextPlugin("css/[name].min.css");
 	const extractSass = new ExtractTextPlugin(isDevBuild ? "css/[name].css" : "css/[name].min.css");
 	console.log(`Dev Environment:${isDevBuild}`);
 
@@ -19,8 +18,9 @@ module.exports = (env) => {
 			resolve: { extensions: [".js", ".ts"] },
 			entry: {
 				site: [
+					/*scss|css*/
 					"./src/assets/styles/site.scss",
-
+					/*ts|js*/
 					"./src/boot.ts"
 				],
 			},
@@ -37,21 +37,6 @@ module.exports = (env) => {
 						include: /src/,
 						use: "awesome-typescript-loader?silent=true",
 					},
-					/*{
-						test: /\.(scss|css)(\?|$)/,
-						use: isDevBuild ? ["style-loader", "css-loader", "sass-loader"] : extractSass.extract({
-							use: [
-								{ loader: "css-loader", options: { minimize: true } },
-								{ loader: "sass-loader", options: { minimize: true } }
-							], fallback: "style-loader"
-						}),
-					},
-					{
-						test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf|svg)(\?|$)/,
-						use: [
-							{ loader: "url-loader", options: { limit: 100000, name: "[hash].[ext]", outputPath: "css/", publicPath: "" } }
-						],
-					},*/
 					{
 						test: /\.(scss|css)(\?|$)/,
 						use: extractSass.extract({

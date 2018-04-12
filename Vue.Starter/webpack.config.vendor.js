@@ -5,7 +5,6 @@ const WebpackCleanPlugin = require('webpack-clean-plugin');
 
 module.exports = (env) => {
 	const isDevBuild = !(env && env.prod);
-	const extractCss = new ExtractTextPlugin("vendor/[name].css");
 	const extractSass = new ExtractTextPlugin(isDevBuild ? "vendor/[name].css" : "vendor/[name].min.css");
 	console.log(`Dev Environment:${isDevBuild}`);
 
@@ -14,10 +13,11 @@ module.exports = (env) => {
 		resolve: { extensions: [".js"] },
 		entry: {
 			vendor: [
-				"./src/assets/styles/theme/vendors.scss",
-
+				/*scss|css*/
+				"./src/assets/styles/theme/external.scss",
+				"./src/assets/styles/theme/style.scss",
+				/*ts|js*/
 				"bootstrap",
-				"bootstrap-vue",
 				"event-source-polyfill",
 				"isomorphic-fetch",
 				"jquery",
@@ -25,9 +25,6 @@ module.exports = (env) => {
 				"toastr",
 				"vue",
 				"vue-router",
-			],
-			theme: [
-				"./src/assets/styles/theme/style.scss",
 			],
 		},
 		module: {
@@ -42,10 +39,6 @@ module.exports = (env) => {
 						fallback: "style-loader",
 					}),
 				},
-				/*{
-					test: /\.css(\?|$)/,
-					use: extractCss.extract({ use: isDevBuild ? "css-loader" : "css-loader?minimize" }),
-				},*/
 				{
 					test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf|svg)(\?|$)/,
 					use: [
@@ -61,7 +54,6 @@ module.exports = (env) => {
 			library: "[name]_[hash]"
 		},
 		plugins: [
-			extractCss,
 			extractSass,
 			new webpack.ProvidePlugin({
 				$: "jquery",
