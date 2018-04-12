@@ -1,12 +1,12 @@
 const path = require("path");
 const webpack = require("webpack");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WebpackCleanPlugin = require('webpack-clean-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CheckerPlugin = require("awesome-typescript-loader").CheckerPlugin;
-const bundleOutputDir = "./wwwroot";
 
 module.exports = (env) => {
+	const bundleOutputDir = "./wwwroot";
 	const isDevBuild = !(env && env.prod);
 	const extractSass = new ExtractTextPlugin(isDevBuild ? "css/[name].css" : "css/[name].min.css");
 	console.log(`Dev Environment:${isDevBuild}`);
