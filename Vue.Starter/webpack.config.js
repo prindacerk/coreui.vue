@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WebpackCleanPlugin = require('webpack-clean-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CheckerPlugin = require("awesome-typescript-loader").CheckerPlugin;
 
@@ -9,10 +10,10 @@ module.exports = (env) => {
 	const bundleOutputDir = "./wwwroot";
 	const isDevBuild = !(env && env.prod);
 	const extractSass = new ExtractTextPlugin(isDevBuild ? "css/[name].css" : "css/[name].min.css");
-	console.log(`Dev Environment:${isDevBuild}`);
 
 	return [
 		{
+			mode: isDevBuild ? "development" : "production",
 			stats: { modules: false },
 			context: __dirname,
 			resolve: { extensions: [".js", ".ts"] },
@@ -63,11 +64,6 @@ module.exports = (env) => {
 			plugins: [
 				new CheckerPlugin(),
 				extractSass,
-				new webpack.DefinePlugin({
-					'process.env': {
-						NODE_ENV: JSON.stringify(isDevBuild ? "development" : "production")
-					}
-				}),
 				new WebpackCleanPlugin({
 					on: "emit",
 					path: [
@@ -75,6 +71,11 @@ module.exports = (env) => {
 						path.join(__dirname, "wwwroot", "images"),
 						path.join(__dirname, "wwwroot", "js"),
 					]
+				}),
+				new webpack.DefinePlugin({
+					'process.env': {
+						NODE_ENV: JSON.stringify(isDevBuild ? "development" : "production")
+					}
 				}),
 				new webpack.DllReferencePlugin({
 					context: __dirname,
@@ -85,7 +86,7 @@ module.exports = (env) => {
 					{
 						from: path.resolve(__dirname, "src/assets/images"),
 						to: "images",
-						ignore: ['.*']
+						ignore: [".*"]
 					}
 				])
 			].concat(isDevBuild
@@ -100,7 +101,7 @@ module.exports = (env) => {
 				]
 				: [
 					// Plugins that apply in production builds only
-					new webpack.optimize.UglifyJsPlugin(),
+					new UglifyJsPlugin(),
 				])
 		}
 	];
