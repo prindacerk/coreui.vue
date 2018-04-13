@@ -2,7 +2,7 @@
 import $ from "jquery";
 import { Component, Prop } from "vue-property-decorator";
 
-var toastr = require("toastr/toastr");
+import toastr from "toastr";
 
 interface IToastrSettings {
 	title: string;
