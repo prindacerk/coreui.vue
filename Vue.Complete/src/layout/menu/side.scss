@@ -1,0 +1,9 @@
+/*
+ * Sidebar
+ */
+.sidebar li a.router-link-active,
+.sidebar li a.router-link-active:hover,
+.sidebar li a.router-link-active:focus {
+	background-color: #4189C7;
+	color: white;
+}
