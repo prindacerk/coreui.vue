@@ -7,5 +7,5 @@ Vue.use(AppToastr);
 var vm = new Vue({
 	el: "#app-root",
 	router: AppRouter,
-	render: h => h(require("./layout/app/app.vue.html").default),
+	render: h => h(require("./layout/app/app.vue").default),
 });

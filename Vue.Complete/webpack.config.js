@@ -1,4 +1,4 @@
-﻿const path = require("path");
+const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WebpackCleanPlugin = require('webpack-clean-plugin');
@@ -28,7 +28,7 @@ module.exports = (env) => {
 			module: {
 				rules: [
 					{
-						test: /\.vue\.html$/,
+						test: /\.vue$/,
 						include: /src/,
 						loader: "vue-loader",
 						options: { loaders: { js: "awesome-typescript-loader?silent=true" } },

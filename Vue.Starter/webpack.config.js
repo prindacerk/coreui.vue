@@ -28,7 +28,7 @@ module.exports = (env) => {
 			module: {
 				rules: [
 					{
-						test: /\.vue\.html$/,
+						test: /\.vue$/,
 						include: /src/,
 						loader: "vue-loader",
 						options: { loaders: { js: "awesome-typescript-loader?silent=true" } },
