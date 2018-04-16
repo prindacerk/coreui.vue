@@ -1,16 +1,11 @@
 ﻿<template>
-	<div>
-		<div class="row">
-			<div class="col-12 text-center">
-				<h1>Toastr</h1>
-
-				<p class="lead">This component demonstrates toastr messages.</p>
+	<div class="animated fadeIn">
+		<div class="card">
+			<div class="card-header">
+				<h4>Toastr</h4> <small>This component demonstrates toastr messages.</small>
 			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-12">
-				<form>
+			<form>
+				<div class="card-body">
 					<div class="row">
 						<div class="col-4">
 							<div class="form-group">
@@ -164,16 +159,13 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="row m-5">
-						<div class="col-12 text-right">
-							<button type="button" class="btn btn-primary" id="showtoast" @click="showToast">Show Toast</button>
-							<button type="button" class="btn btn-danger" id="cleartoasts" @click="clearToasts">Clear Toasts</button>
-							<!--<button type="button" class="btn btn-danger" id="clearlasttoast" @click="clearLastToast">Clear Last Toast</button>-->
-						</div>
-					</div>
-				</form>
-			</div>
+				</div>
+				<div class="card-footer text-right">
+					<button type="button" class="btn btn-primary" id="showtoast" @click="showToast">Show Toast</button>
+					<button type="button" class="btn btn-danger" id="cleartoasts" @click="clearToasts">Clear Toasts</button>
+					<!--<button type="button" class="btn btn-danger" id="clearlasttoast" @click="clearLastToast">Clear Last Toast</button>-->
+				</div>
+			</form>
 		</div>
 	</div>
 </template>

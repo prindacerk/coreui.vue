@@ -25,9 +25,69 @@
 						<i class="fa fa-list-alt" aria-hidden="true"></i> TODO list
 					</router-link>
 				</li>
+			</ul>
+
+			<!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+				<span>Styles</span>
+				<a class="d-flex align-items-center text-muted" href="#"></a>
+			</h6>-->
+
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-title">Styles</li>
+
 				<li class="nav-item">
-					<router-link to="/toast" class="nav-link">
+					<router-link to="/styles/colors" class="nav-link">
+						<i class="fa fa-tint" aria-hidden="true"></i> Colors
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/styles/typography" class="nav-link">
+						<i class="fa fa-pencil" aria-hidden="true"></i> Typography
+					</router-link>
+				</li>
+			</ul>
+
+			<!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+				<span>Theme Components</span>
+				<a class="d-flex align-items-center text-muted" href="#"></a>
+			</h6>-->
+
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-title">Theme Components</li>
+
+				<li class="nav-item">
+					<router-link to="/theme/buttons" class="nav-link">
+						<i class="fa fa-pencil" aria-hidden="true"></i> Buttons
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/theme/switches" class="nav-link">
+						<i class="fa fa-pencil" aria-hidden="true"></i> Switches
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/theme/charts" class="nav-link">
+						<i class="fa fa-tint" aria-hidden="true"></i> Charts
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/theme/forms" class="nav-link">
+						<i class="fa fa-tint" aria-hidden="true"></i> Forms
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/theme/icons" class="nav-link">
+						<i class="fa fa-tint" aria-hidden="true"></i> Icons
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/theme/toastr" class="nav-link">
 						<i class="fa fa-list-alt" aria-hidden="true"></i> Toastr
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/theme/widgets" class="nav-link">
+						<i class="fa fa-tint" aria-hidden="true"></i> Widgets
 					</router-link>
 				</li>
 			</ul>
@@ -35,26 +95,6 @@
 		<div></div>
 		<button class="sidebar-minimizer" type="button" @click="sidebarMinimize();brandMinimize()"></button>
 	</div>
-
-	<!--<div class="sidebar">
-		<div></div>
-		<div></div>
-		<nav class="sidebar-nav">
-			<div slot="header"></div>
-			<ul class="nav">
-				<li class="nav-item">
-					<div>
-						<a href="/" class="router-link-exact-active open active nav-link">
-							<i class="icon-speedometer"></i> Dashboard
-							$1$#1#
-						</a>
-					</div>
-				</li>
-			</ul>
-		</nav>
-		<div></div>
-		<button type="button" class="sidebar-minimizer"></button>
-	</div>-->
 </template>
 
 <script src="./side.ts"></script>

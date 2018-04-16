@@ -1,0 +1,9 @@
+﻿/** http://astronautweb.co/snippet/font-awesome/ **/
+
+[data-toggle="collapse"] .fa:before {
+	content: "\f078";
+}
+
+[data-toggle="collapse"].collapsed .fa:before {
+	content: "\f077";
+}

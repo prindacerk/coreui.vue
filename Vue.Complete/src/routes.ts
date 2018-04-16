@@ -12,7 +12,7 @@ Vue.use((VueRouter) as any);
 ];*/
 
 const router = new VueRouter({
-	mode: "hash",
+	mode: "history",
 	linkActiveClass: "open active",
 	routes: [
 		{
@@ -40,11 +40,73 @@ const router = new VueRouter({
 			children: [],
 		},
 		{
-			path: "/toast",
-			name: "Toast",
+			path: "/styles",
+			name: "Styles",
+			redirect: "/",
+			component: require("./layout/styles.vue").default,
+			children: [
+				{
+					path: "colors",
+					name: "Colors",
+					component: require("./components/styles/color/color.vue").default,
+				},
+				{
+					path: "typography",
+					name: "Typography",
+					component: require("./components/styles/typo/typo.vue").default,
+				},
+			],
+		},
+		{
+			path: "/theme",
+			name: "Theme",
+			redirect: "/",
+			component: require("./layout/theme.vue").default,
+			children: [
+				{
+					path: "buttons",
+					name: "Buttons",
+					component: require("./components/theme/button/button.vue").default,
+				},
+				{
+					path: "switches",
+					name: "Switches",
+					component: require("./components/theme/switch/switch.vue").default,
+				},
+				{
+					path: "charts",
+					name: "Charts",
+					component: require("./components/theme/chart/chart.vue").default,
+				},
+				{
+					path: "forms",
+					name: "Forms",
+					component: require("./components/theme/form/form.vue").default,
+				},
+				{
+					path: "icons",
+					name: "Icons",
+					component: require("./components/theme/icon/icon.vue").default,
+				},
+				{
+					path: "toastr",
+					name: "Toastr",
+					component: require("./components/theme/toastr/toast.vue").default,
+				},
+				{
+					path: "widgets",
+					name: "Widgets",
+					component: require("./components/theme/widget/widget.vue").default,
+				},
+			],
+		},
+
+		/*{
+			path: "/theme/toastr",
+			name: "Toastr",
 			component: require("./components/toast/toast.vue").default,
 			children: [],
-		},
+		},*/
 	]
 });
 

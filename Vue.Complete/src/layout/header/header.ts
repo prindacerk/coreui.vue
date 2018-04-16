@@ -1,7 +1,12 @@
 ﻿import Vue from "vue";
 import { Component } from "vue-property-decorator";
 
-@Component
+
+@Component({
+	components: {
+		UserHeader: require("./header.user.vue").default,
+	}
+})
 export default class HeaderComponent extends Vue {
 	sidebarToggle(e: Event) {
 		e.preventDefault();

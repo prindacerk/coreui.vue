@@ -1,6 +1,11 @@
 /*
  * Sidebar
  */
+.sidebar-heading {
+	font-size: .75rem;
+	text-transform: uppercase;
+}
+
 .sidebar li a.router-link-active,
 .sidebar li a.router-link-active:hover,
 .sidebar li a.router-link-active:focus {
