@@ -5,6 +5,7 @@ const WebpackCleanPlugin = require('webpack-clean-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CheckerPlugin = require("awesome-typescript-loader").CheckerPlugin;
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = (env) => {
 	const bundleOutputDir = "./wwwroot";
@@ -88,7 +89,8 @@ module.exports = (env) => {
 						to: "images",
 						ignore: [".*"]
 					}
-				])
+				]),
+				new VueLoaderPlugin(),
 			].concat(isDevBuild
 				? [
 					// Plugins that apply in development builds only
