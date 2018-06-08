@@ -1,9 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const WebpackCleanPlugin = require('webpack-clean-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CheckerPlugin = require("awesome-typescript-loader").CheckerPlugin;
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
@@ -65,14 +65,11 @@ module.exports = (env) => {
 			plugins: [
 				new CheckerPlugin(),
 				extractSass,
-				new WebpackCleanPlugin({
-					on: "emit",
-					path: [
-						path.join(__dirname, "wwwroot", "css"),
-						path.join(__dirname, "wwwroot", "images"),
-						path.join(__dirname, "wwwroot", "js"),
-					]
-				}),
+				// delete build files
+				new CleanWebpackPlugin(
+					[path.join(__dirname, "wwwroot", "css"), path.join(__dirname, "wwwroot", "images"), path.join(__dirname, "wwwroot", "js"),],
+					{ verbose: false, beforeEmit: true }
+				),
 				new webpack.DefinePlugin({
 					'process.env': {
 						NODE_ENV: JSON.stringify(isDevBuild ? "development" : "production")

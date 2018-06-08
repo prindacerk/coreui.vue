@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const WebpackCleanPlugin = require("webpack-clean-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = (env) => {
@@ -62,10 +62,11 @@ module.exports = (env) => {
 				'window.jQuery': "jquery",
 				Popper: ["popper.js", "default"],
 			}), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
-			new WebpackCleanPlugin({
-				on: "emit",
-				path: path.join(__dirname, "wwwroot", "vendor")
-			}),
+			// delete build files
+			new CleanWebpackPlugin(
+				[path.join(__dirname, "wwwroot", "vendor")],
+				{ verbose: false, beforeEmit: true }
+			),
 			new webpack.DefinePlugin({
 				'process.env': {
 					NODE_ENV: JSON.stringify(isDevBuild ? "development" : "production")
